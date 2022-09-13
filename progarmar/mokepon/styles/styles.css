@@ -23,3 +23,10 @@ button {
     width: 100px;
     height: 40px;
 }
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
