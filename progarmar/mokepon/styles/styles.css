@@ -4,3 +4,22 @@
     height: 50px;
     background-color: burlywood;
 }
+
+label {
+    background-color: rgb(179, 126, 231);
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+}
+
+input {
+    background-color: rgb(153, 255, 0);
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    background-color: rgb(247, 186, 55);
+    width: 100px;
+    height: 40px;
+}
