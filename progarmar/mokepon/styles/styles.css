@@ -1,27 +1,42 @@
 .titulo {
-    color: royalblue;
-    width: 320px;
-    height: 50px;
-    background-color: burlywood;
+    color: rgb(65, 225, 150);
+    height: 35px;
+    padding: 10px;
+    width: 340px;
+    background-color: rgb(201, 243, 51);
+}
+
+.titulo_elige-ataque {
+    width: 100%;
+}
+section {
+    text-align: center;
 }
 
 label {
-    background-color: rgb(179, 126, 231);
-    width: 100px;
-    height: 40px;
-    display: inline-block;
+    background-color: rgb(235, 96, 96);
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    justify-content: center;
+    margin: 20px;
+    border: 5px solid black;
 }
 
 input {
-    background-color: rgb(153, 255, 0);
     width: 20px;
     height: 20px;
 }
 
 button {
     background-color: rgb(247, 186, 55);
-    width: 100px;
-    height: 40px;
+    width: 110px;
+    height: 50px;
+    padding: 10px;
+    margin: 10px;
 }
 
 #seleccionar-mascota {
@@ -29,4 +44,11 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#seleccionar-mascota form {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
