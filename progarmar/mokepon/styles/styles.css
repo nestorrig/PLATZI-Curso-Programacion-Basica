@@ -1,38 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+    --eeg-white: #F5EDDC;
+    --grey: #CFD2CF;
+    --pink: #FA9494;
+    --red: #EB1D36;
+}
+
+body {
+    background-color: var(--eeg-white);
+    font-family: 'Bebas Neue', cursive;
+    
+}
 .titulo {
-    color: rgb(65, 225, 150);
-    height: 35px;
-    padding: 10px;
+    font-size: 70px;
+    color: black;
+    height: 180px; 
     width: 340px;
-    background-color: rgb(201, 243, 51);
+    padding: 10px;
+    margin: 10px;  
 }
 
 .titulo_elige-ataque {
     width: 100%;
 }
+.subtitulo {
+    color: var(--red);
+    font-size: 35px;
+
+    margin: 10px;
+    padding: 10px;
+}
 section {
     text-align: center;
 }
 
-label {
-    background-color: rgb(235, 96, 96);
-    width: 130px;
-    height: 130px;
+.tarjetas-de-mokepon {
+    background-color: var(--pink);
+    
+    width: 200px;
+    height: 200px;
+    
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
+   
     padding: 10px;
     border-radius: 50%;
-    justify-content: center;
     margin: 20px;
     border: 5px solid black;
+}
+.tarjetas-de-mokepon img {
+    width: 150px;
+    height: 150px;
 }
 
 input {
     width: 20px;
     height: 20px;
+    display: none;
 }
 
 button {
-    background-color: rgb(247, 186, 55);
+    background-color: var(--grey);
     width: 110px;
     height: 50px;
     padding: 10px;
@@ -45,10 +76,20 @@ button {
     justify-content: center;
     align-items: center;
 }
-
 #seleccionar-mascota form {
     padding: 20px;
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-size: 20px;
 }
