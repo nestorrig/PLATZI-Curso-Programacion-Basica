@@ -67,7 +67,10 @@ button {
     width: 110px;
     height: 50px;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0 0 0;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #seleccionar-mascota {
@@ -78,7 +81,7 @@ button {
 }
 #seleccionar-mascota form {
     padding: 20px;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-around;
 }
@@ -90,6 +93,19 @@ button {
     align-items: center;
 }
 
+.botones-ataque  {
+    display: flex;
+    justify-content: space-around;
+
+    height: 70px;
+    width: 400px;
+    margin: 20px;
+    padding: 8px;
+    gap: 20px;
+}
+.botones-ataque button {
+    border-radius: 10px;
+}
 p {
     font-size: 20px;
 }
