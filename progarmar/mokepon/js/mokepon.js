@@ -2,6 +2,7 @@ let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
+let titulo
 
 function iniciarJuego(){
     let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
@@ -132,13 +133,33 @@ function revisarVidas(){
 }
 
 function crearMensaje(resultadoCombate){
-    let sectionMensajes = document.getElementById("mensajes")
+    let sectionResultadoCombate = document.getElementById("resultado-combate")
 
-    let parrafo = document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", las mascota del enemigo atacó con " + ataqueEnemigo + ": " + resultadoCombate
+    let parrafo = document.createElement("li")
 
-    sectionMensajes.appendChild(parrafo)
+    parrafo.innerHTML = resultadoCombate
+    sectionResultadoCombate.appendChild(parrafo)
+    
+    function crearMensajeAtaqueJugador() {
+        let statusJugador = document.getElementById("ataques-jugador")
+        
+        let parrafo = document.createElement("li")
+        parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador
+
+        statusJugador.appendChild(parrafo)
+    }
+    function crearMensajeAtaqueEnemigo() {
+        let statusEnemigo = document.getElementById("ataques-enemigo")
+        
+        let parrafo = document.createElement("li")
+        parrafo.innerHTML = "La mascota del enemigo atacó con " + ataqueEnemigo
+
+        statusEnemigo.appendChild(parrafo)
+    }
+    crearMensajeAtaqueJugador()
+    crearMensajeAtaqueEnemigo()
 }
+
 function crearMensajeFinal(resultadoFinal){
     let sectionMensajes = document.getElementById("mensajes")
 

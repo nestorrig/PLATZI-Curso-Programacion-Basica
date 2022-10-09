@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 :root {
+    --blue: rgb(75, 77, 241);
     --eeg-white: #F5EDDC;
     --grey: #CFD2CF;
     --pink: #FA9494;
@@ -10,12 +16,13 @@
 body {
     background-color: var(--eeg-white);
     font-family: 'Bebas Neue', cursive;
+    padding: 20px;
     
 }
 .titulo {
     font-size: 70px;
     color: black;
-    height: 180px; 
+    height: 70px; 
     width: 340px;
     padding: 10px;
     margin: 10px;  
@@ -51,6 +58,9 @@ section {
     margin: 20px;
     border: 5px solid black;
 }
+.tarjetas-de-mokepon:active {
+    background-color: var(--red);
+}
 .tarjetas-de-mokepon img {
     width: 150px;
     height: 150px;
@@ -71,6 +81,10 @@ button {
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
     font-weight: bold;
+}
+
+button:active {
+    background-color: var(--red);
 }
 
 #seleccionar-mascota {
@@ -106,6 +120,102 @@ button {
 .botones-ataque button {
     border-radius: 10px;
 }
+.botones-ataque button:disabled {
+    background-color: var(--eeg-white);
+}
 p {
     font-size: 20px;
+}
+
+.caja-mascotas {
+    display: flex;
+    width: 100%;
+}
+
+.caja-mascotas > div {
+    margin: 20px;
+    
+    width: 50%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: var(--pink);
+}
+
+.nombre {
+    font-size: 40px;
+    margin: 5px;
+    color: var(--eeg-white);
+    -webkit-text-stroke: 1.6px black;
+    border: 1px solid;
+}
+
+#mascota-jugador,
+#mascota-enemigo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#vidas-jugador,
+#vidas-enemigo {
+    font-size: 100px;
+    color: var(--eeg-white);
+    -webkit-text-stroke: 2px black;
+}
+
+.status-jugador,
+.status-enemigo {
+    display: flex;
+    align-items: center; 
+    /* Quitar en alterios para moviles */
+    justify-content: center;
+    gap: 25px;
+
+    padding: 20px;
+}
+
+.status-jugador div:first-child,
+.status-enemigo div:first-child {
+    width: 30%;
+    /* margin-top: 30px ESTE SERVIRA PARA DISPOSITIVOS PEQUEÑOS*/
+}
+
+#resultado-combate {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin: 16px;
+}
+
+#mensajes {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#mensajes p {
+    width: 300px;
+    height: 60px;
+    
+    margin: 24px;
+    border: 2px solid var(--pink);
+    border-radius: 10px;
+    
+    font-size: 30px;
+
+    color: var(--red);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#boton-reiniciar {
+    margin: 24px
+}
+
+#boton-mascota:active,
+#boton-reiniciar:active {
+    background-color: var(--blue);
 }

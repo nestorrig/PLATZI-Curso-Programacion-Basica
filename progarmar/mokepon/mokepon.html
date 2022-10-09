@@ -11,7 +11,7 @@
 <body>
    
     <section id="seleccionar-mascota">
-        <h1 class="titulo ">MOKEPON!! <br> 🔥💧🌱</h1>
+        <h1 class="titulo ">MOKEPON!!</h1>
 
         <h2 class="subtitulo"> Elige a tu mascota:</h2>
             <form class="tarjetas">
@@ -36,25 +36,64 @@
     </section>
 
     <section id="seleccionar-ataque">
-        <h1 class="titulo titulo_elige-ataque">MOKEPON!! <br> 🔥💧🌱</h1>
+        <h1 class="titulo titulo_elige-ataque">MOKEPON!!</h1>
 
-        <h2 class="subtitulo">Elige tu ataque:</h2>
+        <div>
+            <h2 class="subtitulo">Elige tu ataque:</h2>
+            <div class="botones-ataque">
+                <button id="boton-fuego">Fuego 🔥</button>
+                <button id="boton-agua">Agua 💧</button>
+                <button id="boton-tierra">Tierra 🌱</button>
+            </div>
+        </div>
+        
+        <ol id="resultado-combate"></ol>
+        
+        <div id="mensajes">
+            <div id="reiniciar">
+                <button id="boton-reiniciar">Reiniciar</button>
+            </div>
+        </div>
+        
 
-        <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
-        <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <div class="caja-mascotas">
+            
+            <div class="datos datos-jugador">
+                <p class="nombre nombre-jugador">Jugador</p>
+                
+                 <div class="status-jugador">  
+                    <div>
+                        <span id="mascota-jugador"></span>
+                        <br>
+                        <span id="vidas-jugador">3</span>
+                        <br>vidas
+                        
+                    </div>
 
-        <p class="botones-ataque">
-            <button id="boton-fuego">Fuego 🔥</button>
-            <button id="boton-agua">Agua 💧</button>
-            <button id="boton-tierra">Tierra 🌱</button>
-        </p>
+                    <ol id="ataques-jugador"></ol>
+                </div> 
+
+            </div>
+
+            <div class="datos datos-enemigo">
+                <p class="nombre nombre-enemigo">enemigo</p>
+                
+                <div class="status-enemigo">    
+                    <div>
+                        <span id="mascota-enemigo"></span> 
+                        <br>
+                        <span id="vidas-enemigo">3</span>
+                        <br> vidas                   
+                    </div>
+                    
+                    <ol id="ataques-enemigo"></ol>
+                </div>
+
+            </div>
+        </div>
+
     </section>
 
-    <section id="mensajes">
-    </section>
-
-    <section id="reiniciar">
-        <button id="boton-reiniciar">Reiniciar</button>
-    </section>
+    
 </body>
 </html>
