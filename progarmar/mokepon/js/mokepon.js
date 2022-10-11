@@ -135,10 +135,8 @@ function revisarVidas(){
 function crearMensaje(resultadoCombate){
     let sectionResultadoCombate = document.getElementById("resultado-combate")
 
-    let parrafo = document.createElement("li")
-
-    parrafo.innerHTML = resultadoCombate
-    sectionResultadoCombate.appendChild(parrafo)
+    sectionResultadoCombate.innerHTML = resultadoCombate
+    
     
     function crearMensajeAtaqueJugador() {
         let statusJugador = document.getElementById("ataques-jugador")
@@ -183,6 +181,8 @@ function deshabilitarBotones(){
 
         let sectionReiniciar = document.getElementById("reiniciar")
         sectionReiniciar.style.display = "block"
+        let sectionResultadoCombate = document.getElementById("resultado-combate")
+        sectionResultadoCombate.style.display = "none"
 }
 function reiciciarjuego(){
     location.reload()

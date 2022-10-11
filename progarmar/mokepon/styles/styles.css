@@ -47,6 +47,7 @@ section {
     
     width: 200px;
     height: 200px;
+    font-size: 24px;
     
     display: flex;
     flex-direction: column-reverse;
@@ -167,7 +168,7 @@ p {
 .status-enemigo {
     display: flex;
     align-items: center; 
-    /* Quitar en alterios para moviles */
+    /* Quitar en alterior para moviles */
     justify-content: center;
     gap: 25px;
 
@@ -178,41 +179,53 @@ p {
 .status-enemigo div:first-child {
     width: 30%;
     /* margin-top: 30px ESTE SERVIRA PARA DISPOSITIVOS PEQUEÑOS*/
+    
+    /* display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column; */ 
+    /* Poner anteriores 4 para moviles */
 }
 
 #resultado-combate {
+    width: 300px;
+    height: 60px;
+    margin: 24px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    font-size: 30px;
+    color: var(--blue);
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
-    margin: 16px;
+    align-items: center;
 }
 
 #mensajes {
     display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     align-items: center;
 }
 
 #mensajes p {
-    width: 300px;
-    height: 60px;
+    width: 500px;
+    height: 80px;
     
     margin: 24px;
-    border: 2px solid var(--pink);
+    border: 3px solid var(--pink);
     border-radius: 10px;
     
-    font-size: 30px;
+    font-size: 45px;
 
-    color: var(--red);
+    background-color: var(--red);
+    color: var(--eeg-white);
+    -webkit-text-stroke: 2px black;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #boton-reiniciar {
-    margin: 24px
+    margin: 12px;
 }
 
 #boton-mascota:active,
