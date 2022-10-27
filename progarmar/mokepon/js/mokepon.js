@@ -33,18 +33,21 @@ function seleccionarMascotaJugador(){
     let inputRatigueya = document.getElementById("ratigueya")
     let spanMascotaJugador = document.getElementById("mascota-jugador")
     
-    if(inputHipodoge.checked){
+    if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = "Hipodoge"
         botonMascotaJugador.disabled = true
         seleccionarMascotaEnemigo()
+        determinarImagenJugador("Hipodoge");
     }else if(inputCapipepo.checked){
         spanMascotaJugador.innerHTML = "Capipepo"
         botonMascotaJugador.disabled = true
         seleccionarMascotaEnemigo()
+        determinarImagenJugador("Capipepo");
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = "Ratigueya"
         botonMascotaJugador.disabled = true
         seleccionarMascotaEnemigo()
+        determinarImagenJugador("Ratigueya");
     }else{
         alert("Selecciona una mascota")
     }
@@ -66,12 +69,47 @@ function seleccionarMascotaEnemigo(){
         ){
     }else if(enemigo == 1){
         spanMascotaEnemigo.innerHTML = "Hipodoge"
+        determinarImagenEnemigo("Hipodoge")
     }else if(enemigo == 2){
         spanMascotaEnemigo.innerHTML = "Capipepo"
+        determinarImagenEnemigo("Capipepo")
     }else{
         spanMascotaEnemigo.innerHTML = "Ratigueya"
+        determinarImagenEnemigo("Ratigueya")
     } 
 
+}
+
+function determinarImagenJugador(mascotaJugador) {
+    let contenedorImagen = document.getElementById("img-jugador")
+    var imagen = document.createElement('img') 
+
+    if (mascotaJugador == "Hipodoge") {
+        imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
+        contenedorImagen.appendChild(imagen);
+    } else if (mascotaJugador == "Capipepo") {
+        imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
+        contenedorImagen.appendChild(imagen);
+    } else if (mascotaJugador == "Ratigueya") {
+        imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
+        contenedorImagen.appendChild(imagen);
+    }
+}
+
+function determinarImagenEnemigo(mascotaEnemigo) {
+    let contenedorImagen = document.getElementById("img-enemigo")
+    var imagen = document.createElement('img') 
+
+    if (mascotaEnemigo == "Hipodoge") {
+        imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
+        contenedorImagen.appendChild(imagen);
+    } else if (mascotaEnemigo == "Capipepo") {
+        imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
+        contenedorImagen.appendChild(imagen);
+    } else if (mascotaEnemigo == "Ratigueya") {
+        imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
+        contenedorImagen.appendChild(imagen);
+    }
 }
 
 function ataqueFuego() {
@@ -142,7 +180,7 @@ function crearMensaje(resultadoCombate){
         let statusJugador = document.getElementById("ataques-jugador")
         
         let parrafo = document.createElement("li")
-        parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador
+        parrafo.innerHTML = "Atacó con " + ataqueJugador
 
         statusJugador.appendChild(parrafo)
     }
@@ -150,7 +188,7 @@ function crearMensaje(resultadoCombate){
         let statusEnemigo = document.getElementById("ataques-enemigo")
         
         let parrafo = document.createElement("li")
-        parrafo.innerHTML = "La mascota del enemigo atacó con " + ataqueEnemigo
+        parrafo.innerHTML = "Atacó con " + ataqueEnemigo
 
         statusEnemigo.appendChild(parrafo)
     }

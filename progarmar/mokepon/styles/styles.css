@@ -59,17 +59,15 @@ section {
     margin: 20px;
     border: 5px solid black;
 }
-.tarjetas-de-mokepon:active {
-    background-color: var(--red);
-}
 .tarjetas-de-mokepon img {
     width: 150px;
     height: 150px;
 }
 
+input:checked + label {
+    background-color: var(--red);
+}
 input {
-    width: 20px;
-    height: 20px;
     display: none;
 }
 
@@ -110,10 +108,10 @@ button:active {
 
 .botones-ataque  {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    height: 70px;
-    width: 400px;
+    width: 80vw;
     margin: 20px;
     padding: 8px;
     gap: 20px;
@@ -130,6 +128,7 @@ p {
 
 .caja-mascotas {
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -169,23 +168,24 @@ p {
     display: flex;
     align-items: center; 
     /* Quitar en alterior para moviles */
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 25px;
 
     padding: 20px;
 }
 
-.status-jugador div:first-child,
+/* .status-jugador div:first-child,
 .status-enemigo div:first-child {
-    width: 30%;
+    /* width: 30%; */
     /* margin-top: 30px ESTE SERVIRA PARA DISPOSITIVOS PEQUEÑOS*/
     
     /* display: flex;
     align-items: center; 
     justify-content: center;
     flex-direction: column; */ 
-    /* Poner anteriores 4 para moviles */
-}
+    /* Poner anteriores 4 para moviles 
+}*/
+
 
 #resultado-combate {
     width: 300px;
@@ -231,4 +231,66 @@ p {
 #boton-mascota:active,
 #boton-reiniciar:active {
     background-color: var(--blue);
+}
+
+.info {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#img-jugador,
+#img-enemigo {
+    width: 150px;
+}
+
+#img-jugador img,
+#img-enemigo img {
+    width: 150px;
+}
+
+@media (max-width: 650px)  {
+    #seleccionar-mascota form {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        padding: 0;
+        width: 100%;
+    }
+    .tarjetas-de-mokepon {
+        width: 145px;
+        height: 145px;
+        margin: 5px;
+        font-size: 20px;
+
+    }
+    .tarjetas-de-mokepon img {
+        width: 100px;
+        height: 100px;
+    }
+    .status-jugador,
+    .status-enemigo {
+        flex-direction: column;
+
+    }
+    .caja-mascotas > div {
+        margin: 5px;
+    }
+    .botones-ataque {
+        margin: 0;
+        gap: 10px;
+    }
+    #mensajes p {
+        width: 85vw;
+        font-size: 36px;
+        -webkit-text-stroke: 1.5px black;
+        margin: 12px;
+    }
+    #resultado-combate {
+        width: 85vw;
+    }
+    #img-jugador img, #img-enemigo img {
+        display: none;
+    }
 }

@@ -14,22 +14,25 @@
         <h1 class="titulo ">MOKEPON!!</h1>
 
         <h2 class="subtitulo"> Elige a tu mascota:</h2>
-            <form class="tarjetas">
-                <label class="tarjetas-de-mokepon"><input type="radio" name="mascota" id="hipodoge" />
-                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="hipodoge">
+        <form class="tarjetas">
+            <input type="radio" name="mascota" id="hipodoge" />
+            <label class="tarjetas-de-mokepon" for="hipodoge">
+                <img src="./js/assets/mokepons_mokepon_hipodoge_attack.png" alt="hipodoge">
                     Hipodoge
-                </label>
-        
-                <label class="tarjetas-de-mokepon"><input type="radio" name="mascota" id="capipepo" />
-                    <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
-                    Capipepo
-                </label>
-                
-                <label class="tarjetas-de-mokepon"><input type="radio" name="mascota" id="ratigueya" />
-                    <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="ratigueya">
-                    Ratigueya
-                </label>
-            </form>
+            </label>
+    
+            <input type="radio" name="mascota" id="capipepo" />
+            <label class="tarjetas-de-mokepon" for="capipepo">
+                <img src="./js/assets/mokepons_mokepon_capipepo_attack.png" alt="capipepo">
+                Capipepo
+            </label>
+            
+            <input type="radio" name="mascota" id="ratigueya" />
+            <label class="tarjetas-de-mokepon" for="ratigueya">
+                <img src="./js/assets/mokepons_mokepon_ratigueya_attack.png" alt="ratigueya">
+                Ratigueya
+            </label>
+        </form>
             
         
         <button id="boton-mascota">seleccionar</button>
@@ -62,14 +65,16 @@
                 <p class="nombre nombre-jugador">Jugador</p>
                 
                  <div class="status-jugador">  
-                    <div>
-                        <span id="mascota-jugador"></span>
-                        <br>
-                        <span id="vidas-jugador">3</span>
-                        <br>vidas
-                        
+                    <div class="info info-jugador">
+                        <div id="img-jugador"></div>
+                        <div>
+                            <span id="mascota-jugador"></span>
+                            <br>
+                            <span id="vidas-jugador">3</span>
+                            <br>vidas
+                            
+                        </div>
                     </div>
-
                     <ol id="ataques-jugador"></ol>
                 </div> 
 
@@ -79,11 +84,14 @@
                 <p class="nombre nombre-enemigo">enemigo</p>
                 
                 <div class="status-enemigo">    
-                    <div>
-                        <span id="mascota-enemigo"></span> 
-                        <br>
-                        <span id="vidas-enemigo">3</span>
-                        <br> vidas                   
+                    <div class="info info-enemigo">
+                        <div id="img-enemigo"></div>
+                        <div>
+                            <span id="mascota-enemigo"></span> 
+                            <br>
+                            <span id="vidas-enemigo">3</span>
+                            <br> vidas                   
+                        </div>
                     </div>
                     
                     <ol id="ataques-enemigo"></ol>
