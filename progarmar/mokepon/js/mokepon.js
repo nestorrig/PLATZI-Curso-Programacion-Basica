@@ -1,3 +1,25 @@
+
+//VARIABLES GLOBALES
+// sections
+let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
+let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
+let sectionResultadoCombate = document.getElementById("resultado-combate")
+let sectionReiniciar = document.getElementById("reiniciar")
+// buttons
+let botonMascotaJugador = document.getElementById("boton-mascota")
+
+let botonFuego = document.getElementById("boton-fuego")
+let botonAgua = document.getElementById("boton-agua")
+let botonTierra = document.getElementById("boton-tierra")
+
+let botonReciniciar = document.getElementById("boton-reiniciar")
+// inputs
+let inputHipodoge = document.getElementById("hipodoge")
+let inputCapipepo = document.getElementById("capipepo")
+let inputRatigueya = document.getElementById("ratigueya")
+// createElement
+
+//
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
@@ -5,47 +27,35 @@ let vidasEnemigo = 3
 let titulo
 
 function iniciarJuego(){
-    let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
     sectionSeleccionarAtaque.style.display = "none"
-    let sectionReiniciar = document.getElementById("reiniciar")
     sectionReiniciar.style.display = "none"
     
-    let botonMascotaJugador = document.getElementById("boton-mascota")
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
 
-    let botonFuego = document.getElementById("boton-fuego")
     botonFuego.addEventListener("click", ataqueFuego)
-    let botonAgua = document.getElementById("boton-agua")
     botonAgua.addEventListener("click", ataqueAgua)
-    let botonTierra = document.getElementById("boton-tierra")
     botonTierra.addEventListener("click", ataqueTierra)
 
-    let botonReciniciar = document.getElementById("boton-reiniciar")
     botonReciniciar.addEventListener("click", reiciciarjuego)
 }
 
 
 function seleccionarMascotaJugador(){
-    let botonMascotaJugador = document.getElementById("boton-mascota")
-
-    let inputHipodoge = document.getElementById("hipodoge")
-    let inputCapipepo = document.getElementById("capipepo")
-    let inputRatigueya = document.getElementById("ratigueya")
     let spanMascotaJugador = document.getElementById("mascota-jugador")
     
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = "Hipodoge"
-        botonMascotaJugador.disabled = true
+        // botonMascotaJugador.disabled = true "No hay necesidad de esto al tener la section el atributo display: none"
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Hipodoge");
     }else if(inputCapipepo.checked){
         spanMascotaJugador.innerHTML = "Capipepo"
-        botonMascotaJugador.disabled = true
+        // botonMascotaJugador.disabled = true
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Capipepo");
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = "Ratigueya"
-        botonMascotaJugador.disabled = true
+        // botonMascotaJugador.disabled = true
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Ratigueya");
     }else{
@@ -54,18 +64,16 @@ function seleccionarMascotaJugador(){
 
 }
 function seleccionarMascotaEnemigo(){
-    let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
     sectionSeleccionarAtaque.style.display = "flex"
-    let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
     sectionSeleccionarMascota.style.display = "none"
 
     let spanMascotaEnemigo = document.getElementById("mascota-enemigo")
     let enemigo = aleatorio(1,3)
 
     if (
-        (document.getElementById("hipodoge").checked == false) &&
-        (document.getElementById("capipepo").checked == false) &&
-        (document.getElementById("ratigueya").checked == false)
+        (inputHipodoge.checked == false) &&
+        (inputCapipepo.checked == false) &&
+        (inputRatigueya.checked == false)
         ){
     }else if(enemigo == 1){
         spanMascotaEnemigo.innerHTML = "Hipodoge"
@@ -82,7 +90,7 @@ function seleccionarMascotaEnemigo(){
 
 function determinarImagenJugador(mascotaJugador) {
     let contenedorImagen = document.getElementById("img-jugador")
-    var imagen = document.createElement('img') 
+    let imagen = document.createElement('img') 
 
     if (mascotaJugador == "Hipodoge") {
         imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
@@ -98,7 +106,7 @@ function determinarImagenJugador(mascotaJugador) {
 
 function determinarImagenEnemigo(mascotaEnemigo) {
     let contenedorImagen = document.getElementById("img-enemigo")
-    var imagen = document.createElement('img') 
+    let imagen = document.createElement('img') 
 
     if (mascotaEnemigo == "Hipodoge") {
         imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
@@ -136,7 +144,7 @@ function ataqueAleatorioEnemigo(){
     } 
     combate()
 }
-
+////AQUI ME QUEDE, AUN FALAT CODIGO POR REVISAR
 function combate() {
     let spanVidasJugador = document.getElementById("vidas-jugador")
     let spanVidasEnemigo = document.getElementById("vidas-enemigo")
@@ -171,8 +179,6 @@ function revisarVidas(){
 }
 
 function crearMensaje(resultadoCombate){
-    let sectionResultadoCombate = document.getElementById("resultado-combate")
-
     sectionResultadoCombate.innerHTML = resultadoCombate
     
     
@@ -208,18 +214,11 @@ function crearMensajeFinal(resultadoFinal){
 }
 
 function deshabilitarBotones(){
-    let botonFuego = document.getElementById("boton-fuego")
     botonFuego.disabled = true
-
-    let botonAgua = document.getElementById("boton-agua")
     botonAgua.disabled = true
-
-    let botonTierra = document.getElementById("boton-tierra")
     botonTierra.disabled = true
 
-        let sectionReiniciar = document.getElementById("reiniciar")
         sectionReiniciar.style.display = "block"
-        let sectionResultadoCombate = document.getElementById("resultado-combate")
         sectionResultadoCombate.style.display = "none"
 }
 function reiciciarjuego(){
