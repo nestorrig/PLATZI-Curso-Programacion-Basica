@@ -1,23 +1,32 @@
 
 //VARIABLES GLOBALES
 // sections
-let sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
-let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
-let sectionResultadoCombate = document.getElementById("resultado-combate")
-let sectionReiniciar = document.getElementById("reiniciar")
+const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
+const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
+const sectionResultadoCombate = document.getElementById("resultado-combate")
+const sectionReiniciar = document.getElementById("reiniciar")
+const sectionMensajes = document.getElementById("mensajes")
 // buttons
-let botonMascotaJugador = document.getElementById("boton-mascota")
+const botonMascotaJugador = document.getElementById("boton-mascota")
 
-let botonFuego = document.getElementById("boton-fuego")
-let botonAgua = document.getElementById("boton-agua")
-let botonTierra = document.getElementById("boton-tierra")
+const botonFuego = document.getElementById("boton-fuego")
+const botonAgua = document.getElementById("boton-agua")
+const botonTierra = document.getElementById("boton-tierra")
 
-let botonReciniciar = document.getElementById("boton-reiniciar")
+const botonReciniciar = document.getElementById("boton-reiniciar")
 // inputs
-let inputHipodoge = document.getElementById("hipodoge")
-let inputCapipepo = document.getElementById("capipepo")
-let inputRatigueya = document.getElementById("ratigueya")
-// createElement
+const inputHipodoge = document.getElementById("hipodoge")
+const inputCapipepo = document.getElementById("capipepo")
+const inputRatigueya = document.getElementById("ratigueya")
+// span
+const spanMascotaJugador = document.getElementById("mascota-jugador")
+const spanMascotaEnemigo = document.getElementById("mascota-enemigo")
+const contenedorImagenJugador = document.getElementById("img-jugador")
+const contenedorImagenEnemigo = document.getElementById("img-enemigo")
+const spanVidasJugador = document.getElementById("vidas-jugador")
+const spanVidasEnemigo = document.getElementById("vidas-enemigo")
+const statusJugador = document.getElementById("ataques-jugador")
+const statusEnemigo = document.getElementById("ataques-enemigo")
 
 //
 let ataqueJugador
@@ -41,7 +50,6 @@ function iniciarJuego(){
 
 
 function seleccionarMascotaJugador(){
-    let spanMascotaJugador = document.getElementById("mascota-jugador")
     
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = "Hipodoge"
@@ -66,8 +74,6 @@ function seleccionarMascotaJugador(){
 function seleccionarMascotaEnemigo(){
     sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
-
-    let spanMascotaEnemigo = document.getElementById("mascota-enemigo")
     let enemigo = aleatorio(1,3)
 
     if (
@@ -89,34 +95,32 @@ function seleccionarMascotaEnemigo(){
 }
 
 function determinarImagenJugador(mascotaJugador) {
-    let contenedorImagen = document.getElementById("img-jugador")
     let imagen = document.createElement('img') 
 
     if (mascotaJugador == "Hipodoge") {
         imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenJugador.appendChild(imagen);
     } else if (mascotaJugador == "Capipepo") {
         imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenJugador.appendChild(imagen);
     } else if (mascotaJugador == "Ratigueya") {
         imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenJugador.appendChild(imagen);
     }
 }
 
 function determinarImagenEnemigo(mascotaEnemigo) {
-    let contenedorImagen = document.getElementById("img-enemigo")
     let imagen = document.createElement('img') 
 
     if (mascotaEnemigo == "Hipodoge") {
         imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenEnemigo.appendChild(imagen);
     } else if (mascotaEnemigo == "Capipepo") {
         imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenEnemigo.appendChild(imagen);
     } else if (mascotaEnemigo == "Ratigueya") {
         imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
-        contenedorImagen.appendChild(imagen);
+        contenedorImagenEnemigo.appendChild(imagen);
     }
 }
 
@@ -146,8 +150,6 @@ function ataqueAleatorioEnemigo(){
 }
 ////AQUI ME QUEDE, AUN FALAT CODIGO POR REVISAR
 function combate() {
-    let spanVidasJugador = document.getElementById("vidas-jugador")
-    let spanVidasEnemigo = document.getElementById("vidas-enemigo")
     
     if (ataqueEnemigo == ataqueJugador) {
       crearMensaje("EMPATE 🙂")
@@ -183,16 +185,12 @@ function crearMensaje(resultadoCombate){
     
     
     function crearMensajeAtaqueJugador() {
-        let statusJugador = document.getElementById("ataques-jugador")
-        
         let parrafo = document.createElement("li")
         parrafo.innerHTML = "Atacó con " + ataqueJugador
 
         statusJugador.appendChild(parrafo)
     }
     function crearMensajeAtaqueEnemigo() {
-        let statusEnemigo = document.getElementById("ataques-enemigo")
-        
         let parrafo = document.createElement("li")
         parrafo.innerHTML = "Atacó con " + ataqueEnemigo
 
@@ -203,8 +201,6 @@ function crearMensaje(resultadoCombate){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    let sectionMensajes = document.getElementById("mensajes")
-
     let parrafo = document.createElement("p")
     parrafo.innerHTML = resultadoFinal
 
@@ -218,8 +214,8 @@ function deshabilitarBotones(){
     botonAgua.disabled = true
     botonTierra.disabled = true
 
-        sectionReiniciar.style.display = "block"
-        sectionResultadoCombate.style.display = "none"
+    sectionReiniciar.style.display = "block"
+    sectionResultadoCombate.style.display = "none"
 }
 function reiciciarjuego(){
     location.reload()
