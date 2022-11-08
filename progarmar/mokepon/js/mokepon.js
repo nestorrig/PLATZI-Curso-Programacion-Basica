@@ -1,4 +1,3 @@
-
 //VARIABLES GLOBALES
 // sections
 const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota")
@@ -27,14 +26,27 @@ const spanVidasJugador = document.getElementById("vidas-jugador")
 const spanVidasEnemigo = document.getElementById("vidas-enemigo")
 const statusJugador = document.getElementById("ataques-jugador")
 const statusEnemigo = document.getElementById("ataques-enemigo")
-
 //
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 let titulo
+//
+class Mokepon {
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+    }
+}
 
+let hipodoge = new Mokepon("Hipodoge","./assets/mokepons_mokepon_hipodoge_attack.png", 5)
+let capipepo = new Mokepon("Capipepo","./assets/mokepons_mokepon_capipepo_attack.png", 5)
+let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png", 5)
+
+console.log(hipodoge, capipepo, ratigueya)
+//
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
     sectionReiniciar.style.display = "none"
