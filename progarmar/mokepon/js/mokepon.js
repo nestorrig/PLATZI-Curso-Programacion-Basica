@@ -39,6 +39,7 @@ class Mokepon {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataques = []
     }
 }
 
@@ -48,7 +49,27 @@ let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_att
 
 mokepones.push(hipodoge, capipepo, ratigueya)
 
-console.log(mokepones)
+hipodoge.ataques.push(
+    {nombre: "💧", id: "boton-agua"},
+    {nombre: "💧", id: "boton-agua"},
+    {nombre: "💧", id: "boton-agua"},
+    {nombre: "🔥", id: "boton-fuego"},
+    {nombre: "🌱", id: "boton-tierra"},
+)
+capipepo.ataques.push(
+    {nombre: "🌱", id: "boton-tierra"},
+    {nombre: "🌱", id: "boton-tierra"},
+    {nombre: "🌱", id: "boton-tierra"},
+    {nombre: "💧", id: "boton-agua"},
+    {nombre: "🔥", id: "boton-fuego"},
+)
+ratigueya.ataques.push(
+    {nombre: "🔥", id: "boton-fuego"},
+    {nombre: "🔥", id: "boton-fuego"},
+    {nombre: "🔥", id: "boton-fuego"},
+    {nombre: "💧", id: "boton-agua"},
+    {nombre: "🌱", id: "boton-tierra"},
+)
 //
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
@@ -167,19 +188,19 @@ function ataqueAleatorioEnemigo(){
 function combate() {
     
     if (ataqueEnemigo == ataqueJugador) {
-      crearMensaje("EMPATE 🙂")
+        crearMensaje("EMPATE 🙂")
     } else if (
-      (ataqueJugador == "Fuego🌋" && ataqueEnemigo == "Tierra🗻") ||
-      (ataqueJugador == "Agua💦" && ataqueEnemigo == "Fuego🌋") ||
-      (ataqueJugador == "Tierra🗻" && ataqueEnemigo == "Agua💦")
+        (ataqueJugador == "Fuego🌋" && ataqueEnemigo == "Tierra🗻") ||
+        (ataqueJugador == "Agua💦" && ataqueEnemigo == "Fuego🌋") ||
+        (ataqueJugador == "Tierra🗻" && ataqueEnemigo == "Agua💦")
     ) {
-      crearMensaje("GANASTE 😎")
-      vidasEnemigo--
-      spanVidasEnemigo.innerHTML = vidasEnemigo
+        crearMensaje("GANASTE 😎")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
     } else {
-      crearMensaje("PERDISTE 😫")
-      vidasJugador--
-      spanVidasJugador.innerHTML = vidasJugador
+        crearMensaje("PERDISTE 😫")
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
     }
 
     revisarVidas()
