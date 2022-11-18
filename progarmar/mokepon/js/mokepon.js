@@ -105,18 +105,15 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     
     if(inputHipodoge.checked){ 
-        spanMascotaJugador.innerHTML = "Hipodoge"
-        // botonMascotaJugador.disabled = true "No hay necesidad de esto al tener la section el atributo display: none"
+        spanMascotaJugador.innerHTML = inputHipodoge.id 
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Hipodoge");
     }else if(inputCapipepo.checked){
-        spanMascotaJugador.innerHTML = "Capipepo"
-        // botonMascotaJugador.disabled = true
+        spanMascotaJugador.innerHTML = inputCapipepo.id
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Capipepo");
     }else if(inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = "Ratigueya"
-        // botonMascotaJugador.disabled = true
+        spanMascotaJugador.innerHTML = inputRatigueya.id
         seleccionarMascotaEnemigo()
         determinarImagenJugador("Ratigueya");
     }else{
