@@ -124,27 +124,15 @@ function seleccionarMascotaJugador(){
 function seleccionarMascotaEnemigo(){
     sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
-    let enemigo = aleatorio(1,3)
+    let enemigo = aleatorio(0, mokepones.length - 1)
+    let imagen = document.createElement('img')
+    imagen.src = mokepones[enemigo].foto
 
-    if (
-        (inputHipodoge.checked == false) &&
-        (inputCapipepo.checked == false) &&
-        (inputRatigueya.checked == false)
-        ){
-    }else if(enemigo == 1){
-        spanMascotaEnemigo.innerHTML = "Hipodoge"
-        determinarImagenEnemigo("Hipodoge")
-    }else if(enemigo == 2){
-        spanMascotaEnemigo.innerHTML = "Capipepo"
-        determinarImagenEnemigo("Capipepo")
-    }else{
-        spanMascotaEnemigo.innerHTML = "Ratigueya"
-        determinarImagenEnemigo("Ratigueya")
-    } 
-
+    spanMascotaEnemigo.innerHTML = mokepones[enemigo].nombre
+    contenedorImagenEnemigo.appendChild(imagen);
 }
 
-function determinarImagenJugador(mascotaJugador) {
+function determinarImagenJugador(mascotaJugador) { // Esta funcion debe ser modificada o eliminada
     let imagen = document.createElement('img') 
 
     if (mascotaJugador == "Hipodoge") {
@@ -156,21 +144,6 @@ function determinarImagenJugador(mascotaJugador) {
     } else if (mascotaJugador == "Ratigueya") {
         imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
         contenedorImagenJugador.appendChild(imagen);
-    }
-}
-
-function determinarImagenEnemigo(mascotaEnemigo) {
-    let imagen = document.createElement('img') 
-
-    if (mascotaEnemigo == "Hipodoge") {
-        imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
-        contenedorImagenEnemigo.appendChild(imagen);
-    } else if (mascotaEnemigo == "Capipepo") {
-        imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
-        contenedorImagenEnemigo.appendChild(imagen);
-    } else if (mascotaEnemigo == "Ratigueya") {
-        imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
-        contenedorImagenEnemigo.appendChild(imagen);
     }
 }
 
