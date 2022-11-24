@@ -34,6 +34,7 @@ let botonAgua
 let botonTierra
 //
 let mascotaJugador 
+let ataquesMokepon
 let vidasJugador = 3
 let vidasEnemigo = 3
 let titulo
@@ -88,61 +89,66 @@ function iniciarJuego(){
         </label>    
         `
         contendorTarjetas.innerHTML += opcionDeMokepones
-
         inputHipodoge = document.getElementById("Hipodoge")
         inputCapipepo = document.getElementById("Capipepo")
         inputRatigueya = document.getElementById("Ratigueya")
     })
-
-    mokepones.forEach((mokepon) => {
-        opcionDeMokepones = `<button id=${mokepon.ataques[0].id}>${mokepon.ataques[0].nombre}</button>`
-
-        contendorBotones.innerHTML += opcionDeMokepones
-
-        botonFuego = document.getElementById("boton-fuego")
-        botonAgua = document.getElementById("boton-agua")
-        botonTierra = document.getElementById("boton-tierra")
-    })
-
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
-    botonFuego.addEventListener("click", ataqueFuego)
-    botonAgua.addEventListener("click", ataqueAgua)
-    botonTierra.addEventListener("click", ataqueTierra)
     botonReciniciar.addEventListener("click", reiciciarjuego)
 }
 
 
 function seleccionarMascotaJugador(){
-    
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = inputHipodoge.id 
         mascotaJugador = inputHipodoge.id
         seleccionarMascotaEnemigo()
-        determinarImagenJugador("Hipodoge");
     }else if(inputCapipepo.checked){
         spanMascotaJugador.innerHTML = inputCapipepo.id
         mascotaJugador = inputCapipepo.id
         seleccionarMascotaEnemigo()
-        determinarImagenJugador("Capipepo");
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
         seleccionarMascotaEnemigo()
-        determinarImagenJugador("Ratigueya");
     }else{
         alert("Selecciona una mascota")
     }
-    extraerAtaques(mascotaJugador);
+    crearJugador(mascotaJugador)
 }
 
-function extraerAtaques(mascotaJugador) {
+function crearJugador(mascotaJugador) {
     let ataques;
+    let foto;
+    let nombre;
+
     for (let i = 0; i < mokepones.length; i++) {
         if (mascotaJugador === mokepones[i].nombre) {
             ataques = mokepones[i].ataques
+            foto = mokepones[i].foto
+            nombre = mokepones[i].nombre
         }        
     }
     mostrarAtaques(ataques);
+    function mostrarAtaques(ataques) {
+        ataques.forEach((ataque) => {
+            ataquesMokepon = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`
+            contendorBotones.innerHTML += ataquesMokepon;
+        })
+        botonFuego = document.getElementById("boton-fuego")
+        botonAgua = document.getElementById("boton-agua")
+        botonTierra = document.getElementById("boton-tierra")
+        botonFuego.addEventListener("click", ataqueFuego)
+        botonAgua.addEventListener("click", ataqueAgua)
+        botonTierra.addEventListener("click", ataqueTierra)
+    }
+    determinarImagenJugador()
+    function determinarImagenJugador() { // Esta funcion ha sido mejorada.
+        let imagen = document.createElement('img') 
+        imagen.src = foto
+        imagen.alt = nombre
+        contenedorImagenJugador.appendChild(imagen);
+    }
 }
 
 function seleccionarMascotaEnemigo(){
@@ -155,21 +161,6 @@ function seleccionarMascotaEnemigo(){
 
     spanMascotaEnemigo.innerHTML = mokepones[enemigo].nombre
     contenedorImagenEnemigo.appendChild(imagen);
-}
-
-function determinarImagenJugador(mascotaJugador) { // Esta funcion debe ser modificada o eliminada
-    let imagen = document.createElement('img') 
-
-    if (mascotaJugador == "Hipodoge") {
-        imagen.src = "./assets/mokepons_mokepon_hipodoge_attack.png";
-        contenedorImagenJugador.appendChild(imagen);
-    } else if (mascotaJugador == "Capipepo") {
-        imagen.src = "./assets/mokepons_mokepon_capipepo_attack.png";
-        contenedorImagenJugador.appendChild(imagen);
-    } else if (mascotaJugador == "Ratigueya") {
-        imagen.src = "./assets/mokepons_mokepon_ratigueya_attack.png";
-        contenedorImagenJugador.appendChild(imagen);
-    }
 }
 
 function ataqueFuego() {
@@ -196,7 +187,7 @@ function ataqueAleatorioEnemigo(){
     } 
     combate()
 }
-////AQUI ME QUEDE, AUN FALAT CODIGO POR REVISAR
+
 function combate() {
     
     if (ataqueEnemigo == ataqueJugador) {
