@@ -21,7 +21,7 @@ const statusJugador = document.getElementById("ataques-jugador")
 const statusEnemigo = document.getElementById("ataques-enemigo")
 //
 let mokepones = []
-let ataqueJugador
+let ataqueJugador = []
 let ataqueEnemigo
 let opcionDeMokepones
 // inputs
@@ -32,6 +32,7 @@ let inputRatigueya
 let botonFuego 
 let botonAgua
 let botonTierra
+let botones = []
 //
 let mascotaJugador 
 let ataquesMokepon
@@ -132,15 +133,13 @@ function crearJugador(mascotaJugador) {
     mostrarAtaques(ataques);
     function mostrarAtaques(ataques) {
         ataques.forEach((ataque) => {
-            ataquesMokepon = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`
+            ataquesMokepon = `<button id=${ataque.id} class="boton-de-ataque BotonAtaque">${ataque.nombre}</button>`
             contendorBotones.innerHTML += ataquesMokepon;
         })
         botonFuego = document.getElementById("boton-fuego")
         botonAgua = document.getElementById("boton-agua")
         botonTierra = document.getElementById("boton-tierra")
-        botonFuego.addEventListener("click", ataqueFuego)
-        botonAgua.addEventListener("click", ataqueAgua)
-        botonTierra.addEventListener("click", ataqueTierra)
+        botones = document.querySelectorAll(".BotonAtaque")
     }
     determinarImagenJugador()
     function determinarImagenJugador() { // Esta funcion ha sido mejorada.
@@ -149,6 +148,27 @@ function crearJugador(mascotaJugador) {
         imagen.alt = nombre
         contenedorImagenJugador.appendChild(imagen);
     }
+    secuenciaAtaque()
+}
+
+function secuenciaAtaque() {
+    botones.forEach((boton) => {
+        boton.addEventListener("click", (e) => {
+            if (e.target.textContent === "FUEGO🔥") {
+                ataqueJugador.push("FUEGO")
+                console.log(ataqueJugador)
+                boton.style.background = "#F5EDDC"
+            }else if (e.target.textContent === "AGUA💧") {
+                ataqueJugador.push("AGUA")
+                console.log(ataqueJugador)
+                boton.style.background = "#F5EDDC"
+            } else {
+                ataqueJugador.push("TIERRA")
+                console.log(ataqueJugador)
+                boton.disabled = true //mejor alternativa
+            }
+        })
+    })
 }
 
 function seleccionarMascotaEnemigo(){
@@ -163,18 +183,6 @@ function seleccionarMascotaEnemigo(){
     contenedorImagenEnemigo.appendChild(imagen);
 }
 
-function ataqueFuego() {
-    ataqueJugador = "Fuego🌋"
-    ataqueAleatorioEnemigo()
-}
-function ataqueAgua() {
-    ataqueJugador = "Agua💧"
-    ataqueAleatorioEnemigo()
-}
-function ataqueTierra() {
-    ataqueJugador = "Tierra🗻"
-    ataqueAleatorioEnemigo()
-}
 function ataqueAleatorioEnemigo(){
     ataqueEnemigo = aleatorio(1,3)
 
