@@ -22,7 +22,7 @@ const statusEnemigo = document.getElementById("ataques-enemigo")
 //
 let mokepones = []
 let ataqueJugador = []
-let ataqueEnemigo
+let ataqueEnemigo = []
 let opcionDeMokepones
 // inputs
 let inputHipodoge 
@@ -36,6 +36,7 @@ let botones = []
 //
 let mascotaJugador 
 let ataquesMokepon
+let ataqueMokeponEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 let titulo
@@ -157,16 +158,17 @@ function secuenciaAtaque() {
             if (e.target.textContent === "FUEGO🔥") {
                 ataqueJugador.push("FUEGO")
                 console.log(ataqueJugador)
-                boton.style.background = "#F5EDDC"
+                boton.disabled = true
             }else if (e.target.textContent === "AGUA💧") {
                 ataqueJugador.push("AGUA")
                 console.log(ataqueJugador)
-                boton.style.background = "#F5EDDC"
+                boton.disabled = true
             } else {
                 ataqueJugador.push("TIERRA")
                 console.log(ataqueJugador)
                 boton.disabled = true //mejor alternativa
             }
+            ataqueAleatorioEnemigo()
         })
     })
 }
@@ -180,19 +182,21 @@ function seleccionarMascotaEnemigo(){
     imagen.alt = mokepones[enemigo].nombre
 
     spanMascotaEnemigo.innerHTML = mokepones[enemigo].nombre
+    ataqueMokeponEnemigo = mokepones[enemigo].ataques
     contenedorImagenEnemigo.appendChild(imagen);
 }
 
 function ataqueAleatorioEnemigo(){
-    ataqueEnemigo = aleatorio(1,3)
+    let ataqueAleatorio = aleatorio(0, ataqueMokeponEnemigo.length - 1)
 
-    if(ataqueEnemigo == 1){
-        ataqueEnemigo = "Fuego🌋"
-    }else if(ataqueEnemigo == 2){
-        ataqueEnemigo = "Agua💧"
+    if(ataqueAleatorio == 0|| ataqueAleatorio == 1){
+        ataqueEnemigo.push("FUEGO")
+    }else if(ataqueAleatorio == 3 || ataqueAleatorio == 4){
+        ataqueEnemigo.push("AGUA")
     }else{
-        ataqueEnemigo = "Tierra🗻"
+        ataqueEnemigo.push("TIERRA")
     } 
+    console.log(ataqueEnemigo)
     combate()
 }
 
