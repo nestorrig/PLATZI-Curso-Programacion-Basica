@@ -156,8 +156,8 @@ p {
     font-weight: bold;
 }
 
-#vidas-jugador,
-#vidas-enemigo {
+#victorias-jugador,
+#victorias-enemigo {
     font-size: 100px;
     color: var(--eeg-white);
     -webkit-text-stroke: 2px black;
