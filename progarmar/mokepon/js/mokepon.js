@@ -167,7 +167,6 @@ function secuenciaAtaque() {
                 ataqueJugador.push("TIERRA")
                 boton.disabled = true //mejor alternativa
             }
-            console.log(ataqueJugador)
             ataqueAleatorioEnemigo()
         })
     })
@@ -196,8 +195,6 @@ function ataqueAleatorioEnemigo(){
     }else{
         ataqueEnemigo.push("TIERRA")
     } 
-    console.log(ataqueEnemigo)
-    // iniciarValidacion()
     combate()
 }
 function iniciarValidacion(){
@@ -229,7 +226,6 @@ function combate() {
             indexAtaques(i, i)
             resultado = "PERDISTE 😫"
         }
-        console.log(ataqueJugador[i], ataqueEnemigo[i])
     }
     crearMensaje(resultado)
     iniciarValidacion()
@@ -260,7 +256,6 @@ function crearMensaje(resultadoCombate){
             parrafo.style.color = "#EB1D36"
         }
         parrafo.innerHTML = "Atacó con " + indexAtaqueJugador
-        console.log(parrafo.innerHTML)
         statusJugador.appendChild(parrafo)
     }
     function crearMensajeAtaqueEnemigo() {
