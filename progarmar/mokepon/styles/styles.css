@@ -41,7 +41,11 @@ body {
 section {
     text-align: center;
 }
-
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .tarjetas-de-mokepon {
     background-color: var(--pink);
     
@@ -97,6 +101,7 @@ button:active {
     width: 80%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 #seleccionar-ataque {
@@ -251,6 +256,12 @@ p {
 }
 
 @media (max-width: 650px)  {
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     #seleccionar-mascota form {
         flex-wrap: wrap;
         justify-content: space-evenly;

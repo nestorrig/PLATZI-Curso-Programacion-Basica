@@ -28,6 +28,9 @@ let opcionDeMokepones
 let inputHipodoge 
 let inputCapipepo 
 let inputRatigueya
+let inputLangostelvis
+let inputPydos
+let inputTucapalma
 //ataques
 let botonFuego 
 let botonAgua
@@ -55,6 +58,9 @@ class Mokepon {
 let hipodoge = new Mokepon("Hipodoge","./assets/mokepons_mokepon_hipodoge_attack.png", 5)
 let capipepo = new Mokepon("Capipepo","./assets/mokepons_mokepon_capipepo_attack.png", 5)
 let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png", 5)
+let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png", 5)
+let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png", 5)
+let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png", 5)
 
 hipodoge.ataques.push(
     {nombre: "AGUA💧", id: "boton-agua"},
@@ -77,8 +83,28 @@ ratigueya.ataques.push(
     {nombre: "AGUA💧", id: "boton-agua"},
     {nombre: "TIERRA🗻", id: "boton-tierra"},
 )
-
-mokepones.push(hipodoge, capipepo, ratigueya)
+langostelvis.ataques.push(
+    {nombre: "AGUA💧", id: "boton-agua"},
+    {nombre: "FUEGO🔥", id: "boton-fuego"},
+    {nombre: "AGUA💧", id: "boton-agua"},
+    {nombre: "FUEGO🔥", id: "boton-fuego"},
+    {nombre: "TIERRA🗻", id: "boton-tierra"},
+)
+pydos.ataques.push(
+    {nombre: "AGUA💧", id: "boton-agua"},
+    {nombre: "AGUA💧", id: "boton-agua"},
+    {nombre: "FUEGO🔥", id: "boton-fuego"},
+    {nombre: "TIERRA🗻", id: "boton-tierra"},
+    {nombre: "TIERRA🗻", id: "boton-tierra"},
+)
+tucapalma.ataques.push(
+    {nombre: "AGUA💧", id: "boton-agua"},
+    {nombre: "FUEGO🔥", id: "boton-fuego"},
+    {nombre: "FUEGO🔥", id: "boton-fuego"},
+    {nombre: "TIERRA🗻", id: "boton-tierra"},
+    {nombre: "TIERRA🗻", id: "boton-tierra"},
+)
+mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, pydos, tucapalma)
 //
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
@@ -96,6 +122,9 @@ function iniciarJuego(){
         inputHipodoge = document.getElementById("Hipodoge")
         inputCapipepo = document.getElementById("Capipepo")
         inputRatigueya = document.getElementById("Ratigueya")
+        inputLangostelvis = document.getElementById("Langostelvis")
+        inputPydos = document.getElementById("Pydos")
+        inputTucapalma = document.getElementById("Tucapalma")
     })
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReciniciar.addEventListener("click", reiciciarjuego)
@@ -114,6 +143,18 @@ function seleccionarMascotaJugador(){
     }else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
+        seleccionarMascotaEnemigo()
+    }else if(inputLangostelvis.checked){
+        spanMascotaJugador.innerHTML = inputLangostelvis.id
+        mascotaJugador = inputLangostelvis.id
+        seleccionarMascotaEnemigo()
+    }else if(inputPydos.checked){
+        spanMascotaJugador.innerHTML = inputPydos.id
+        mascotaJugador = inputPydos.id
+        seleccionarMascotaEnemigo()
+    }else if(inputTucapalma.checked){
+        spanMascotaJugador.innerHTML = inputTucapalma.id
+        mascotaJugador = inputTucapalma.id
         seleccionarMascotaEnemigo()
     }else{
         alert("Selecciona una mascota")
