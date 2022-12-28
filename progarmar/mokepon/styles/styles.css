@@ -103,7 +103,14 @@ button:active {
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
+#ver-mapa{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#mapa {
+    border: 3px solid var(--red);
+}
 #seleccionar-ataque {
     display: flex;
     flex-direction: column;

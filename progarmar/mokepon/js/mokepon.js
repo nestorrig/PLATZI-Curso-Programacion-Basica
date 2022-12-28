@@ -5,6 +5,8 @@ const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque")
 const sectionResultadoCombate = document.getElementById("resultado-combate")
 const sectionReiniciar = document.getElementById("reiniciar")
 const sectionMensajes = document.getElementById("mensajes")
+const sectionVerMapa = document.getElementById("ver-mapa")
+const mapa = document.getElementById("mapa")
 const contendorTarjetas = document.getElementById("contendorTarjetas")
 const contendorBotones = document.getElementById("contendorBotones")
 // buttons
@@ -45,6 +47,7 @@ let ataqueMokeponEnemigo
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let titulo
+let lienzo = mapa.getContext("2d")
 //
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -109,6 +112,7 @@ mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, pydos, tucapalma)
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"
     sectionReiniciar.style.display = "none"
+    sectionVerMapa.style.display = "none"
     
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -132,6 +136,13 @@ function iniciarJuego(){
 
 
 function seleccionarMascotaJugador(){
+    sectionVerMapa.style.display = "flex"
+    // sectionSeleccionarAtaque.style.display = "flex"
+    sectionSeleccionarMascota.style.display = "none"
+    let imagenDeCapipepo = new Image()
+    imagenDeCapipepo.src = pydos.foto
+    lienzo.drawImage(imagenDeCapipepo,20,20,100,100)
+
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = inputHipodoge.id 
         mascotaJugador = inputHipodoge.id
@@ -201,12 +212,15 @@ function secuenciaAtaque() {
             if (e.target.textContent === "FUEGO🔥") {
                 ataqueJugador.push("FUEGO")
                 boton.disabled = true
+                boton.style.cursor = 'not-allowed'
             }else if (e.target.textContent === "AGUA💧") {
                 ataqueJugador.push("AGUA")
                 boton.disabled = true
+                boton.style.cursor = 'not-allowed'
             } else {
                 ataqueJugador.push("TIERRA")
-                boton.disabled = true //mejor alternativa
+                boton.disabled = true
+                boton.style.cursor = 'not-allowed'
             }
             ataqueAleatorioEnemigo()
         })
@@ -214,8 +228,6 @@ function secuenciaAtaque() {
 }
 
 function seleccionarMascotaEnemigo(){
-    sectionSeleccionarAtaque.style.display = "flex"
-    sectionSeleccionarMascota.style.display = "none"
     let enemigo = aleatorio(0, mokepones.length - 1)
     let imagen = document.createElement('img')
     imagen.src = mokepones[enemigo].foto
