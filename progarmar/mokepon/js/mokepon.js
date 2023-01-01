@@ -12,6 +12,7 @@ const contendorBotones = document.getElementById("contendorBotones")
 // buttons
 const botonMascotaJugador = document.getElementById("boton-mascota")
 const botonReciniciar = document.getElementById("boton-reiniciar")
+
 // span
 const spanMascotaJugador = document.getElementById("mascota-jugador")
 const spanMascotaEnemigo = document.getElementById("mascota-enemigo")
@@ -55,6 +56,12 @@ class Mokepon {
         this.foto = foto
         this.vida = vida
         this.ataques = []
+        this.x = 20
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
     }
 }
 
@@ -130,6 +137,10 @@ function iniciarJuego(){
         inputPydos = document.getElementById("Pydos")
         inputTucapalma = document.getElementById("Tucapalma")
     })
+    const controls = document.querySelectorAll('.boton-controles')
+    controls.forEach((control)=>{
+    control.addEventListener('click',()=>moverMokepon(control.id))
+    })
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReciniciar.addEventListener("click", reiciciarjuego)
 }
@@ -137,11 +148,9 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     sectionVerMapa.style.display = "flex"
+    pintarPersonaje()
     // sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
-    let imagenDeCapipepo = new Image()
-    imagenDeCapipepo.src = pydos.foto
-    lienzo.drawImage(imagenDeCapipepo,20,20,100,100)
 
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = inputHipodoge.id 
@@ -342,5 +351,38 @@ function reiciciarjuego(){
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function pintarPersonaje() {
+    mapa.width = 300
+    mapa.height = 300
+    lienzo.clearRect(0,0,mapa.width,mapa.height)
+    lienzo.drawImage(
+        pydos.mapaFoto,
+        pydos.x,
+        pydos.y,
+        pydos.ancho,
+        pydos.alto
+    )
+}
+function moverMokepon(direccion) {
+        switch (direccion) {
+            case "up":
+                pydos.y -= 5;
+                break;
+            case "left":
+                pydos.x -= 5;
+                break;
+            case "right":
+                pydos.x += 5;
+                break;
+            case "down":
+                pydos.y += 5;
+                break;
+            default:
+                break;
+        }
+    
+    pintarPersonaje()
 }
 window.addEventListener("load", iniciarJuego)
