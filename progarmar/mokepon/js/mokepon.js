@@ -48,7 +48,9 @@ let ataqueMokeponEnemigo
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let titulo
+//mapa
 let lienzo = mapa.getContext("2d")
+let intervalo
 //
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -62,6 +64,8 @@ class Mokepon {
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 }
 
@@ -139,7 +143,7 @@ function iniciarJuego(){
     })
     const controls = document.querySelectorAll('.boton-controles')
     controls.forEach((control)=>{
-    control.addEventListener('click',()=>moverMokepon(control.id))
+    control.addEventListener('mousedown',()=>moverMokepon(control.id))
     })
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReciniciar.addEventListener("click", reiciciarjuego)
@@ -148,7 +152,7 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     sectionVerMapa.style.display = "flex"
-    pintarPersonaje()
+    intervalo = setInterval(pintarPersonaje, 50)
     // sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
 
@@ -354,6 +358,8 @@ function aleatorio(min, max) {
 }
 
 function pintarPersonaje() {
+    pydos.x += pydos.velocidadX
+    pydos.y += pydos.velocidadY
     mapa.width = 300
     mapa.height = 300
     lienzo.clearRect(0,0,mapa.width,mapa.height)
@@ -366,23 +372,25 @@ function pintarPersonaje() {
     )
 }
 function moverMokepon(direccion) {
-        switch (direccion) {
-            case "up":
-                pydos.y -= 5;
-                break;
-            case "left":
-                pydos.x -= 5;
-                break;
-            case "right":
-                pydos.x += 5;
-                break;
-            case "down":
-                pydos.y += 5;
-                break;
-            default:
-                break;
-        }
-    
-    pintarPersonaje()
+    switch (direccion) {
+        case "up":
+            pydos.velocidadY = -5;
+            break;
+        case "left":
+            pydos.velocidadX = -5;
+            break;
+        case "right":
+            pydos.velocidadX = 5;
+            break;
+        case "down":
+            pydos.velocidadY = 5;
+            break;
+        default:
+            break;
+    }
+}
+function detenerMokepon() {
+    pydos.velocidadX = 0
+    pydos.velocidadY = 0
 }
 window.addEventListener("load", iniciarJuego)

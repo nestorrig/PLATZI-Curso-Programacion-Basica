@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-   
+    
     <section id="seleccionar-mascota">
         <h1 class="titulo ">MOKEPON!!</h1>
 
@@ -27,12 +27,12 @@
         </div>
         <canvas id="mapa"></canvas>
         <div id="Controles" class="controles-mokepon">
-            <button id="up" class="boton-controles" onclick="moverMokepon()">↑</button>
+            <button id="up" class="boton-controles" onmouseup="detenerMokepon()" onmousedown="moverMokepon()">↑</button>
             <div>
-                <button id="left" class="boton-controles" onclick="moverMokepon()">←</button>
-                <button id="right" class="boton-controles" onclick="moverMokepon()">→</button>
+                <button id="left" class="boton-controles" onmouseup="detenerMokepon()" onmousedown="moverMokepon()">←</button>
+                <button id="right" class="boton-controles" onmouseup="detenerMokepon()" onmousedown="moverMokepon()">→</button>
             </div>
-            <button id="down" class="boton-controles" onclick="moverMokepon()">↓</button>
+            <button id="down" class="boton-controles" onmouseup="detenerMokepon()" onmousedown="moverMokepon()">↓</button>
         </div>
     </section>
 
