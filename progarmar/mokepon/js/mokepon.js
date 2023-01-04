@@ -141,21 +141,17 @@ function iniciarJuego(){
         inputPydos = document.getElementById("Pydos")
         inputTucapalma = document.getElementById("Tucapalma")
     })
-    const controls = document.querySelectorAll('.boton-controles')
-    controls.forEach((control)=>{
-    control.addEventListener('mousedown',()=>moverMokepon(control.id))
-    })
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
     botonReciniciar.addEventListener("click", reiciciarjuego)
 }
 
 
 function seleccionarMascotaJugador(){
-    sectionVerMapa.style.display = "flex"
-    intervalo = setInterval(pintarPersonaje, 50)
-    // sectionSeleccionarAtaque.style.display = "flex"
     sectionSeleccionarMascota.style.display = "none"
-
+    // sectionSeleccionarAtaque.style.display = "flex"
+    sectionVerMapa.style.display = "flex"
+    iniciarMapa()
+    
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = inputHipodoge.id 
         mascotaJugador = inputHipodoge.id
@@ -373,16 +369,16 @@ function pintarPersonaje() {
 }
 function moverMokepon(direccion) {
     switch (direccion) {
-        case "up":
+        case "ArrowUp":
             pydos.velocidadY = -5;
             break;
-        case "left":
+        case "ArrowLeft":
             pydos.velocidadX = -5;
             break;
-        case "right":
+        case "ArrowRight":
             pydos.velocidadX = 5;
             break;
-        case "down":
+        case "ArrowDown":
             pydos.velocidadY = 5;
             break;
         default:
@@ -392,5 +388,36 @@ function moverMokepon(direccion) {
 function detenerMokepon() {
     pydos.velocidadX = 0
     pydos.velocidadY = 0
+}
+function sePresionoTecla(event) {
+    tecla = event.key
+    switch (event.key) {
+        case "ArrowUp":
+            moverMokepon(tecla)
+            break;
+        case "ArrowLeft":
+            moverMokepon(tecla)
+            break;
+        case "ArrowRight":
+            moverMokepon(tecla)
+            break;
+        case "ArrowDown":
+            moverMokepon(tecla)
+            break;
+        default:
+            break;
+    }
+}
+function iniciarMapa() {
+    const controls = document.querySelectorAll('.boton-controles')
+    controls.forEach((control)=>{
+        control.addEventListener('mousedown',()=>moverMokepon(control.id))
+        control.addEventListener('mouseup',()=>detenerMokepon())
+        control.addEventListener('touchstart',()=>moverMokepon(control.id))
+        control.addEventListener('touchend',()=>detenerMokepon())
+    })
+    intervalo = setInterval(pintarPersonaje, 50)
+    window.addEventListener("keydown", sePresionoTecla)
+    window.addEventListener("keyup", detenerMokepon)
 }
 window.addEventListener("load", iniciarJuego)
