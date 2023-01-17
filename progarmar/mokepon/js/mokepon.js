@@ -51,33 +51,45 @@ let victoriasEnemigo = 0
 let titulo
 //mapa
 let lienzo = mapa.getContext("2d")
+mapa.width = 700
+mapa.height = 500
 let intervalo
 let mapaBackground = new Image()
-mapaBackground.src = "./assets/mokemap.png"
+mapaBackground.src = "./assets/map.png"
 //
 class Mokepon {
-    constructor(nombre, foto, vida) {
+    constructor(nombre, foto, vida, fotoMapa) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = 20
-        this.y = 30
         this.ancho = 80
         this.alto = 80
+        this.x= aleatorio(0, mapa.width-this.ancho),
+        this.y= aleatorio(0, mapa.height-this.alto),
         this.mapaFoto = new Image()
-        this.mapaFoto.src = foto
+        this.mapaFoto.src = fotoMapa || foto
         this.velocidadX = 0
         this.velocidadY = 0
+        console.log(this.x, this.y)
+    }
+    pintarMokepon() {
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto
+        )
     }
 }
 
-let hipodoge = new Mokepon("Hipodoge","./assets/mokepons_mokepon_hipodoge_attack.png", 5)
-let capipepo = new Mokepon("Capipepo","./assets/mokepons_mokepon_capipepo_attack.png", 5)
-let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png", 5)
-let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png", 5)
-let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png", 5)
-let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png", 5)
+let hipodoge = new Mokepon("Hipodoge","./assets/mokepons_mokepon_hipodoge_attack.png", 5, "./assets/hipodoge.png")
+let capipepo = new Mokepon("Capipepo","./assets/mokepons_mokepon_capipepo_attack.png", 5, "./assets/capipepo.png")
+let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png", 5, "./assets/ratigueya.png")
+let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png", 5, "https://imgur.com/iaJhdyY.png")
+let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png", 5, "https://imgur.com/LWkctTb.png")
+let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png", 5, "https://i.imgur.com/y3s277X.png")
 
 hipodoge.ataques.push(
     {nombre: "AGUA💧", id: "boton-agua"},
@@ -365,13 +377,10 @@ function pintarCanvas() {
     mapa.width,
     mapa.height
     )
-    lienzo.drawImage(
-        mascotaJugadorObjeto.mapaFoto,
-        mascotaJugadorObjeto.x,
-        mascotaJugadorObjeto.y,
-        mascotaJugadorObjeto.ancho,
-        mascotaJugadorObjeto.alto
-    )
+    mascotaJugadorObjeto.pintarMokepon()
+    mokepones.forEach((mokepon) => {
+        mokepon.pintarMokepon()
+    })
 }
 function moverMokepon(direccion) {
     switch (direccion) {
