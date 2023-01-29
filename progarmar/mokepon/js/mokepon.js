@@ -50,28 +50,79 @@ let ataqueMokeponEnemigo
 let victoriasJugador = 0
 let victoriasEnemigo = 0
 let titulo
+//dispositivo -- tamaños
+let anchoMokepon
+let altoMokepon
+let anchoDispositivo = window.innerWidth
+let escalaDelMapa
+let bordeRespectoAlMapa
+determinarDispositivo()
+function determinarDispositivo() {
+
+    if(anchoDispositivo > 1) {
+        anchoMokepon = 25
+        altoMokepon = 25
+        escalaDelMapa = (4 / 3)
+        bordeRespectoAlMapa = (anchoDispositivo*.40)
+    } if(anchoDispositivo >= 350) {
+        anchoMokepon = 30
+        altoMokepon = 30
+        escalaDelMapa = 1
+        bordeRespectoAlMapa = (anchoDispositivo*.40)
+    } if (anchoDispositivo >= 410){
+        anchoMokepon = 32
+        altoMokepon = 32
+        escalaDelMapa = 1
+        bordeRespectoAlMapa = (anchoDispositivo*.30)
+    } if (anchoDispositivo >= 768){
+        anchoMokepon = 45
+        altoMokepon = 45
+        escalaDelMapa = (3 / 4)
+        bordeRespectoAlMapa = (anchoDispositivo*.20)
+    } if (anchoDispositivo >= 1024){
+        anchoMokepon = 55
+        altoMokepon = 55
+        escalaDelMapa = (5 / 8)
+        bordeRespectoAlMapa = (anchoDispositivo*.20)
+    } if (anchoDispositivo >= 1366){
+        anchoMokepon = 60
+        altoMokepon = 60
+        escalaDelMapa = (5 / 8)
+        bordeRespectoAlMapa = (anchoDispositivo*.10)
+    }
+
+}
 //mapa
 let lienzo = mapa.getContext("2d")
-mapa.width = 700
-mapa.height = 500
 let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = "./assets/map.png"
+let alturaQueBuscamos
+let anchoDelMapa = anchoDispositivo - bordeRespectoAlMapa
+const anchoMaximoDelMapa = 800
+if (anchoDelMapa > anchoMaximoDelMapa) {
+    anchoDelMapa = anchoMaximoDelMapa - 50
+}
+alturaQueBuscamos = anchoDelMapa * escalaDelMapa
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
+
 //
 class Mokepon {
     constructor(nombre, foto, vida, fotoMapa) {
-        this.nombre = nombre
-        this.foto = foto
-        this.vida = vida
+        this.nombre = nombre,
+        this.foto = foto,
+        this.vida = vida,
         this.ataques = []
-        this.ancho = 50
-        this.alto = 50
-        this.x= Math.random()*mapa.width,
-        this.y= Math.random()*mapa.height,
-        this.mapaFoto = new Image()
-        this.mapaFoto.src = fotoMapa || foto
-        this.velocidadX = 0
+        this.ancho = anchoMokepon,
+        this.alto = altoMokepon,
+        this.x= aleatorio(0, mapa.width - this.ancho),
+        this.y= aleatorio(0, mapa.height - this.alto),
+        this.mapaFoto = new Image(),
+        this.mapaFoto.src = fotoMapa || foto,
+        this.velocidadX = 0,
         this.velocidadY = 0
+        console.log(anchoMokepon, anchoDispositivo);
     }
     pintarMokepon() {
         lienzo.drawImage(
@@ -136,7 +187,7 @@ tucapalma.ataques.push(
 mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, pydos, tucapalma)
 ///MOKEPONES ENEMIGOS
 let hipodogeEnemigo = new Mokepon("Hipodoge","./assets/mokepons_mokepon_hipodoge_attack.png", 5, "./assets/hipodoge.png")
-let capipepoEnemigo = new Mokepon("CapipepoEnemigo","./assets/mokepons_mokepon_capipepo_attack.png", 5, "./assets/capipepo.png")
+let capipepoEnemigo = new Mokepon("Capipepo","./assets/mokepons_mokepon_capipepo_attack.png", 5, "./assets/capipepo.png")
 let ratigueyaEnemigo = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png", 5, "./assets/ratigueya.png")
 let langostelvisEnemigo = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png", 5, "https://imgur.com/iaJhdyY.png")
 let pydosEnemigo = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png", 5, "https://imgur.com/LWkctTb.png")
@@ -208,14 +259,12 @@ function iniciarJuego(){
         inputTucapalma = document.getElementById("Tucapalma")
     })
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
-    botonReciniciar.addEventListener("click", reiciciarjuego)
+    botonReciniciar.addEventListener("click", reiniciarjuego)
 }
 
 
 function seleccionarMascotaJugador(){
-    sectionSeleccionarMascota.style.display = "none"
     // sectionSeleccionarAtaque.style.display = "flex"
-    sectionVerMapa.style.display = "flex"
     
     if(inputHipodoge.checked){ 
         spanMascotaJugador.innerHTML = inputHipodoge.id 
@@ -237,9 +286,10 @@ function seleccionarMascotaJugador(){
         mascotaJugador = inputTucapalma.id
     }else{
         alert("Selecciona una mascota")
+        return
     }
-    crearJugador(mascotaJugador)
     iniciarMapa()
+    crearJugador(mascotaJugador)
 }
 
 function crearJugador(mascotaJugador) {
@@ -402,7 +452,7 @@ function crearMensajeFinal(resultadoFinal){
     sectionResultadoCombate.style.display = "none"
 }
 
-function reiciciarjuego(){
+function reiniciarjuego(){
     location.reload()
 }
 
@@ -479,8 +529,8 @@ function sePresionoTecla(event) {
     }
 }
 function iniciarMapa() {
-    mapa.width = 700
-    mapa.height = 500
+    sectionSeleccionarMascota.style.display = "none"
+    sectionVerMapa.style.display = "flex"
     mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
     const controls = document.querySelectorAll('.boton-controles')
     controls.forEach((control)=>{
@@ -501,15 +551,17 @@ function obtenerObjetoMascota() {
     }
 }
 function revisarColision(enemigo) {
+    const espacioEntreMokepones = mascotaJugadorObjeto.ancho*.2
+    // https://platzi.com/comentario/3925743/
     const arribaEnemigo = enemigo.y
     const abajoEnemigo = enemigo.y + enemigo.alto
     const derechaEnemigo = enemigo.x + enemigo.ancho
     const izquierdaEnemigo = enemigo.x
 
-    const arribaMascota = mascotaJugadorObjeto.y
-    const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto
-    const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho
-    const izquierdaMascota = mascotaJugadorObjeto.x
+    const arribaMascota = mascotaJugadorObjeto.y + espacioEntreMokepones
+    const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto - espacioEntreMokepones
+    const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho - espacioEntreMokepones
+    const izquierdaMascota = mascotaJugadorObjeto.x + espacioEntreMokepones
 
     if(
         abajoMascota < arribaEnemigo ||

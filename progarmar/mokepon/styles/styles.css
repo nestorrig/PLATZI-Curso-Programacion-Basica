@@ -62,6 +62,7 @@ section {
     border-radius: 50%;
     margin: 20px;
     border: 5px solid black;
+    cursor: pointer;
 }
 .tarjetas-de-mokepon img {
     width: 150px;
@@ -84,6 +85,7 @@ button {
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 button:active {
@@ -110,6 +112,9 @@ button:active {
 }
 #mapa {
     border: 3px solid var(--red);
+}
+#Controles {
+    margin: 32px;
 }
 #seleccionar-ataque {
     display: flex;
@@ -310,5 +315,13 @@ p {
     }
     #img-jugador img, #img-enemigo img {
         display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mapa-container {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
     }
 }
