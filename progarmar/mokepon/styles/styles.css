@@ -116,6 +116,9 @@ button:active {
 #Controles {
     margin: 32px;
 }
+#Controles button {
+    border-radius: 10px;
+}
 #seleccionar-ataque {
     display: flex;
     flex-direction: column;
