@@ -70,10 +70,10 @@ function determinarDispositivo() {
         escalaDelMapa = 1
         bordeRespectoAlMapa = (anchoDispositivo*.40)
     } if (anchoDispositivo >= 410){
-        anchoMokepon = 32
-        altoMokepon = 32
+        anchoMokepon = 36
+        altoMokepon = 36
         escalaDelMapa = 1
-        bordeRespectoAlMapa = (anchoDispositivo*.30)
+        bordeRespectoAlMapa = (anchoDispositivo*.15)
     } if (anchoDispositivo >= 768){
         anchoMokepon = 45
         altoMokepon = 45
