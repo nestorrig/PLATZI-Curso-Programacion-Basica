@@ -244,7 +244,7 @@ function iniciarJuego(){
     
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
-        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <input class="input__mokepon" type="radio" name="mascota" id=${mokepon.nombre} />
         <label class="tarjetas-de-mokepon" for=${mokepon.nombre}>
             <img src=${mokepon.foto} alt=${mokepon.nombre}>
             ${mokepon.nombre}
@@ -418,11 +418,11 @@ function crearMensaje(resultadoCombate){
     function crearMensajeAtaqueJugador() {
         let parrafo = document.createElement("li")
         if (resultadoCombate === "GANASTE 😎") {
-            parrafo.style.color = "#186A3B"
+            parrafo.style.color = "#4a9d9c"
             victoriasJugador++
             spanVictoriasJugador.innerHTML = victoriasJugador
         }if (resultadoCombate === "PERDISTE 😫") {
-            parrafo.style.color = "#EB1D36"
+            parrafo.style.color = "#FF3D3D"
         }
         parrafo.innerHTML = "Atacó con " + indexAtaqueJugador
         statusJugador.appendChild(parrafo)
@@ -430,11 +430,11 @@ function crearMensaje(resultadoCombate){
     function crearMensajeAtaqueEnemigo() {
         let parrafo = document.createElement("li")
         if (resultadoCombate === "PERDISTE 😫") {
-            parrafo.style.color = "#186A3B"
+            parrafo.style.color = "#4a9d9c"
             victoriasEnemigo++
             spanVictoriasEnemigo.innerHTML = victoriasEnemigo
         }if (resultadoCombate === "GANASTE 😎") {
-            parrafo.style.color = "#EB1D36"
+            parrafo.style.color = "#FF3D3D"
         }
         parrafo.innerHTML = "Atacó con " + indexAtaqueEnemigo
         statusEnemigo.appendChild(parrafo)
