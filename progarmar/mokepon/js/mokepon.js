@@ -51,61 +51,38 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let titulo
 //dispositivo -- tamaños
+let anchoDispositivo
 let anchoMokepon
 let altoMokepon
-let anchoDispositivo = window.innerWidth
-let escalaDelMapa
-let bordeRespectoAlMapa
-determinarDispositivo()
-function determinarDispositivo() {
+window.addEventListener('resize', mapaSize)
+mapaSize()
+function mapaSize() {
+    console.log(anchoDispositivo);
+    anchoDispositivo = window.innerWidth
 
     if(anchoDispositivo > 1) {
-        anchoMokepon = 25
-        altoMokepon = 25
-        escalaDelMapa = (4 / 3)
-        bordeRespectoAlMapa = (anchoDispositivo*.40)
+        mapa.width = anchoDispositivo *.9
+        mapa.height = mapa.width * .75
     } if(anchoDispositivo >= 350) {
-        anchoMokepon = 30
-        altoMokepon = 30
-        escalaDelMapa = 1
-        bordeRespectoAlMapa = (anchoDispositivo*.40)
-    } if (anchoDispositivo >= 410){
-        anchoMokepon = 36
-        altoMokepon = 36
-        escalaDelMapa = 1
-        bordeRespectoAlMapa = (anchoDispositivo*.15)
-    } if (anchoDispositivo >= 768){
-        anchoMokepon = 45
-        altoMokepon = 45
-        escalaDelMapa = (3 / 4)
-        bordeRespectoAlMapa = (anchoDispositivo*.20)
-    } if (anchoDispositivo >= 1024){
-        anchoMokepon = 55
-        altoMokepon = 55
-        escalaDelMapa = (5 / 8)
-        bordeRespectoAlMapa = (anchoDispositivo*.20)
-    } if (anchoDispositivo >= 1366){
-        anchoMokepon = 60
-        altoMokepon = 60
-        escalaDelMapa = (5 / 8)
-        bordeRespectoAlMapa = (anchoDispositivo*.10)
+        mapa.width = anchoDispositivo *.9
+        mapa.height = anchoDispositivo * .9
+    }if(anchoDispositivo >= 600) {
+        mapa.width = anchoDispositivo *.8
+        mapa.height = anchoDispositivo * .8
+    }if(anchoDispositivo >= 1000) {
+        mapa.width = anchoDispositivo *.5
+        mapa.height = anchoDispositivo * .3
     }
-
+        
+    anchoMokepon = mapa.width /10
+    altoMokepon = mapa.width /10
 }
+
 //mapa
 let lienzo = mapa.getContext("2d")
 let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = "./assets/map.png"
-let alturaQueBuscamos
-let anchoDelMapa = anchoDispositivo - bordeRespectoAlMapa
-const anchoMaximoDelMapa = 800
-if (anchoDelMapa > anchoMaximoDelMapa) {
-    anchoDelMapa = anchoMaximoDelMapa - 50
-}
-alturaQueBuscamos = anchoDelMapa * escalaDelMapa
-mapa.width = anchoDelMapa
-mapa.height = alturaQueBuscamos
 
 //
 class Mokepon {
