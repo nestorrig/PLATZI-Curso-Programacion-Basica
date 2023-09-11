@@ -215,9 +215,7 @@ tucapalmaEnemigo.ataques.push(
 mokeponesEnemigos.push(hipodogeEnemigo, capipepoEnemigo, ratigueyaEnemigo, langostelvisEnemigo, pydosEnemigo, tucapalmaEnemigo)
 //
 function iniciarJuego(){
-    sectionSeleccionarAtaque.style.display = "none"
-    sectionReiniciar.style.display = "none"
-    sectionVerMapa.style.display = "none"
+    
     
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -425,8 +423,8 @@ function crearMensajeFinal(resultadoFinal){
 
     sectionMensajes.appendChild(parrafo)
 
-    sectionReiniciar.style.display = "block"
-    sectionResultadoCombate.style.display = "none"
+    sectionReiniciar.classList.remove('inactive')
+    sectionResultadoCombate.classList.add('inactive')
 }
 
 function reiniciarjuego(){
@@ -506,8 +504,8 @@ function sePresionoTecla(event) {
     }
 }
 function iniciarMapa() {
-    sectionSeleccionarMascota.style.display = "none"
-    sectionVerMapa.style.display = "flex"
+    sectionSeleccionarMascota.classList.add('inactive')
+    sectionVerMapa.classList.remove('inactive')
     mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
     const controls = document.querySelectorAll('.boton-controles')
     controls.forEach((control)=>{
@@ -553,8 +551,8 @@ function revisarColision(enemigo) {
     clearInterval(intervalo)
     console.log("Se detecto una colision");
     alert("Se detecto una colision con: " + enemigo.nombre)
-    sectionSeleccionarAtaque.style.display = "flex"
-    sectionVerMapa.style.display = "none"
+    sectionSeleccionarAtaque.classList.remove('inactive')
+    sectionVerMapa.classList.add('inactive')
     seleccionarMascotaEnemigo(enemigo)
 }
 window.addEventListener("load", iniciarJuego)

@@ -18,7 +18,9 @@
     --bg-300:#354656;
       
 }
-
+.inactive {
+    display: none !important;
+}
 body {
     background-color: var(--bg-100);
     font-family: 'Bebas Neue', cursive;
@@ -118,6 +120,7 @@ button:active {
     flex-wrap: wrap;
 }
 #ver-mapa{
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

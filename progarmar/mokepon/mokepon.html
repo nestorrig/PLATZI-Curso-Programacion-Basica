@@ -9,92 +9,94 @@
 </head>
 <body>
     
-    <section id="seleccionar-mascota">
-        <h1 class="titulo ">MOKEPON!!</h1>
-
-        <h2 class="subtitulo"> Elige a tu mascota:</h2>
-        <div id="contenedorFormulario" class="formulario">
-            <form id="contendorTarjetas" class="tarjetas">
-            </form>
-            <button id="boton-mascota">seleccionar</button>
-        </div>
-    </section>
-
-    <section id="ver-mapa">
-        <h2 class="subtitulo">Recorre el mapa con tu mokepon</h2>
-        <div class="mapa-container">
-            <canvas id="mapa"></canvas>
-            <div id="Controles" class="controles-mokepon">
-                <button id="ArrowUp" class="boton-controles">↑</button>
-                <div>
-                    <button id="ArrowLeft" class="boton-controles">←</button>
-                    <button id="ArrowRight" class="boton-controles">→</button>
+    <main>
+        <section id="seleccionar-mascota">
+            <h1 class="titulo ">MOKEPON!!</h1>
+    
+            <h2 class="subtitulo"> Elige a tu mascota:</h2>
+            <div id="contenedorFormulario" class="formulario">
+                <form id="contendorTarjetas" class="tarjetas">
+                </form>
+                <button id="boton-mascota">seleccionar</button>
+            </div>
+        </section>
+    
+        <section id="ver-mapa" class="inactive">
+            <h2 class="subtitulo">Recorre el mapa con tu mokepon</h2>
+            <div class="mapa-container">
+                <canvas id="mapa"></canvas>
+                <div id="Controles" class="controles-mokepon">
+                    <button id="ArrowUp" class="boton-controles">↑</button>
+                    <div>
+                        <button id="ArrowLeft" class="boton-controles">←</button>
+                        <button id="ArrowRight" class="boton-controles">→</button>
+                    </div>
+                    <button id="ArrowDown" class="boton-controles">↓</button>
                 </div>
-                <button id="ArrowDown" class="boton-controles">↓</button>
             </div>
-        </div>
-    </section>
-
-    <section id="seleccionar-ataque">
-        <h1 class="titulo titulo_elige-ataque">MOKEPON!!</h1>
-
-        <div>
-            <h2 class="subtitulo">Elige tu ataque:</h2>
-            <div id="contendorBotones" class="botones-ataque">
+        </section>
+    
+        <section id="seleccionar-ataque" class="inactive">
+            <h1 class="titulo titulo_elige-ataque">MOKEPON!!</h1>
+    
+            <div>
+                <h2 class="subtitulo">Elige tu ataque:</h2>
+                <div id="contendorBotones" class="botones-ataque">
+                </div>
             </div>
-        </div>
-        
-        <div id="resultado-combate">suerte campeón</div>
-        
-        <div id="mensajes">
-            <div id="reiniciar">
-                <button id="boton-reiniciar">Reiniciar</button>
-            </div>
-        </div>
-        
-
-        <div class="caja-mascotas">
             
-            <div class="datos datos-jugador">
-                <p class="nombre nombre-jugador">Jugador</p>
-                
-                <div class="status-jugador">  
-                    <div class="info info-jugador">
-                        <div id="img-jugador"></div>
-                        <div>
-                            <span id="mascota-jugador"></span>
-                            <br>
-                            <span id="victorias-jugador">0</span>
-                            <br>victorias
-                            
-                        </div>
-                    </div>
-                    <ol id="ataques-jugador"></ol>
-                </div> 
-
-            </div>
-
-            <div class="datos datos-enemigo">
-                <p class="nombre nombre-enemigo">enemigo</p>
-                
-                <div class="status-enemigo">    
-                    <div class="info info-enemigo">
-                        <div id="img-enemigo"></div>
-                        <div>
-                            <span id="mascota-enemigo"></span> 
-                            <br>
-                            <span id="victorias-enemigo">0</span>
-                            <br> victorias                   
-                        </div>
-                    </div>
-                    
-                    <ol id="ataques-enemigo"></ol>
+            <div id="resultado-combate">suerte campeón</div>
+            
+            <div id="mensajes">
+                <div id="reiniciar" class="inactive">
+                    <button id="boton-reiniciar">Reiniciar</button>
                 </div>
-
             </div>
-        </div>
-
-    </section>
+            
+    
+            <div class="caja-mascotas">
+                
+                <div class="datos datos-jugador">
+                    <p class="nombre nombre-jugador">Jugador</p>
+                    
+                    <div class="status-jugador">  
+                        <div class="info info-jugador">
+                            <div id="img-jugador"></div>
+                            <div>
+                                <span id="mascota-jugador"></span>
+                                <br>
+                                <span id="victorias-jugador">0</span>
+                                <br>victorias
+                                
+                            </div>
+                        </div>
+                        <ol id="ataques-jugador"></ol>
+                    </div> 
+    
+                </div>
+    
+                <div class="datos datos-enemigo">
+                    <p class="nombre nombre-enemigo">enemigo</p>
+                    
+                    <div class="status-enemigo">    
+                        <div class="info info-enemigo">
+                            <div id="img-enemigo"></div>
+                            <div>
+                                <span id="mascota-enemigo"></span> 
+                                <br>
+                                <span id="victorias-enemigo">0</span>
+                                <br> victorias                   
+                            </div>
+                        </div>
+                        
+                        <ol id="ataques-enemigo"></ol>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </section>
+    </main>
 
     
     <script src="./js/mokepon.js"></script>
